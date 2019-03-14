@@ -90,7 +90,7 @@ public class Power : MonoBehaviour
             speed -= velocidadSubida;
             sli.value = speed;
 
-            if (speed = maskPos,= 0)
+            if (speed == 0)
             {
                 ChangeSpeed_DOWN = false;
             }
