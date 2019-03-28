@@ -4551,6 +4551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Personaje@Holding Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 77964640e2d4c084b9a39e9a77652b75, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 24e9577743e0c024aa694017e5574b7b, type: 2}
     - target: {fileID: 400086, guid: 77964640e2d4c084b9a39e9a77652b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.01
@@ -4607,10 +4611,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.875
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 77964640e2d4c084b9a39e9a77652b75, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 24e9577743e0c024aa694017e5574b7b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77964640e2d4c084b9a39e9a77652b75, type: 3}
 --- !u!1 &1880033317 stripped
@@ -5737,6 +5737,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: sli
+      value: 
+      objectReference: {fileID: 535860572}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: rootPower
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: sli2
+      value: 
+      objectReference: {fileID: 1336720606}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: post
+      value: 
+      objectReference: {fileID: 1858635232}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: velocidadBajada
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: rootPower1
+      value: 
+      objectReference: {fileID: 1568635313}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: rootPower2
+      value: 
+      objectReference: {fileID: 8181332}
     - target: {fileID: 2178620038069290169, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5807,41 +5842,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: sli
-      value: 
-      objectReference: {fileID: 535860572}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: rootPower
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: sli2
-      value: 
-      objectReference: {fileID: 1336720606}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: post
-      value: 
-      objectReference: {fileID: 1858635232}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: velocidadBajada
-      value: 0.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: rootPower1
-      value: 
-      objectReference: {fileID: 1568635313}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: rootPower2
-      value: 
-      objectReference: {fileID: 8181332}
     - target: {fileID: 2178620038537854022, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
         type: 3}
       propertyPath: CollisionModule.plane0
@@ -6663,7 +6663,7 @@ MonoBehaviour:
     fastMode: 0
     keepAlpha: 0
   fog:
-    enabled: 1
+    enabled: 0
     excludeSkybox: 1
   debugLayer:
     lightMeter:
