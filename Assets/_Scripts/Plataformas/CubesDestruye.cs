@@ -16,7 +16,8 @@ public class CubesDestruye : MonoBehaviour
     private float HSV_s;
     private float HSV_v;
     private Color32 col2;
-    private Rigidbody rb;
+    private bool caer;
+    private float sumandoCaida = 0;
 
     private void Awake()
     {
@@ -24,13 +25,12 @@ public class CubesDestruye : MonoBehaviour
         mat = cube.GetComponent<MeshRenderer>().material;
         col = mat.GetColor("_Color");
         Color.RGBToHSV(col, out HSV_h, out HSV_s, out HSV_v);
-        rb = cube.GetComponent<Rigidbody>();
         trigger.tagg = "Player";
     }
 
     private void Update()
     {
-        if (trigger.stayC)
+        if (trigger.stayT)
         {
             if (!enter)
             {
@@ -39,14 +39,19 @@ public class CubesDestruye : MonoBehaviour
                 StartCoroutine(DelayCaida());
             }
         }
+
+        if (caer)
+        {
+            sumandoCaida += 0.002f;
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - sumandoCaida, transform.localPosition.z);
+        }
     }
 
     IEnumerator DelayCaida()
     {
         StartCoroutine(ChangeSpeed(HSV_v, (HSV_v - 0.5f), tiempoEspera));
         yield return new WaitForSeconds(tiempoEspera);
-        rb.isKinematic = false;
-        rb.useGravity = true;
+        caer = true;
     }
 
     IEnumerator ChangeSpeed(float v_start, float v_end, float duration)

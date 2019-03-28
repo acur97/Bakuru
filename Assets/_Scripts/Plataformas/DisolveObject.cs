@@ -41,7 +41,7 @@ public class DisolveObject : MonoBehaviour
             mat.SetColor("_Color", col2);
             mat.SetColor("_EmissionColor", colE2);
         }
-        trigger.tagg = "Player";
+        trigger.tagg = "PlayerSphere";
     }
 
     private void Update()

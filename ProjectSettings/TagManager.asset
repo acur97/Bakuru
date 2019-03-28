@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PowerUp
+  - Jugador
+  - PlayerSphere
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GroundCheck
+  - Pisos
+  - Jugador
+  - Objetos
+  - Paredes
   - 
   - 
   - 

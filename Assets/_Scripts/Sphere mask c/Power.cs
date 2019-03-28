@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Power : MonoBehaviour
 {
     public Slider sli;
+    public Transform rootPower1;
+    public Transform rootPower2;
     public Slider sli2;
     public GameObject esfera;
     public DisolveTrigger triggerPowerUp;
@@ -15,16 +17,15 @@ public class Power : MonoBehaviour
     [Space]
     public PostProcessVolume post;
 
-    private float poder = 25;
-    //private float energia = 25;
-    private bool subido;
-    //private bool comenzar;
-    private bool bajarSpeed;
-    private bool bajarPoder;
-    private bool ChangeSpeed_UP;
-    private bool ChangeSpeed_DOWN;
-    private bool enter;
-    private bool exit = true;
+    private float energia = 25;
+    private float poder = 0;
+    private bool subirPoder;
+    private bool puedeComprobarPoder;
+    private bool gastarEnergia;
+    private bool estabaGastandoEnergia;
+    private float limitCantidadSubirEnergia;
+    private bool subirEnergia;
+
     private ChromaticAberration chromatic;
     private float normalChromatic;
     private Bloom bloom;
@@ -35,14 +36,14 @@ public class Power : MonoBehaviour
     private SphereCollider esferaR;
 
     private int count = 0;
-    private float speed = 0;
+    private bool enter;
 
     private void Awake()
     {
         esferaT = esfera.transform;
         esferaR = esfera.GetComponent<SphereCollider>();
-        esferaR.enabled = false;
         esferaT.localScale = new Vector3(0, 0, 0);
+        esfera.SetActive(false);
         post.profile.TryGetSettings(out chromatic);
         post.profile.TryGetSettings(out bloom);
         post.profile.TryGetSettings(out grain);
@@ -50,52 +51,169 @@ public class Power : MonoBehaviour
         normalBloom = bloom.intensity.value;
         normalGrain = grain.intensity.value;
         triggerPowerUp.tagg = "PowerUp";
+
+        sli.value = 25;
+        sli2.value = 0;
+
+        rootPower1.localScale = new Vector3(1, 1, 1);
+        rootPower2.localScale = new Vector3(1, 1, 1);
+    }
+
+    public void CargarEnergia(int cantidadEnergia)
+    {
+        if (energia < 25)
+        {
+            subirEnergia = true;
+            float suma = energia + cantidadEnergia;
+            limitCantidadSubirEnergia = Mathf.Clamp(suma, 0, 25);
+        }
+    }
+
+    public void TriggerPoderExterno()
+    {
+        if (energia > 0)
+        {
+            count += 1;
+        }
+
+        if (count == 1)
+        {
+            gastarEnergia = true;
+            subirPoder = true;
+            Debug.Log("activado");
+        }
+        if (count == 2)
+        {
+            gastarEnergia = false;
+            subirPoder = false;
+            count = 0;
+            Debug.Log("desactivado");
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            count += 1;
+            CargarEnergia(5);
+        }
+
+        if (Input.GetButtonDown("Power"))
+        {
+            if (energia > 0)
+            {
+                count += 1;
+            }
 
             if (count == 1)
             {
-                ChangeSpeed_DOWN = false;
-                ChangeSpeed_UP = true;
-                Debug.Log("activar");
+                gastarEnergia = true;
+                subirPoder = true;
+                Debug.Log("activado");
             }
             if (count == 2)
             {
-                ChangeSpeed_DOWN = true;
-                ChangeSpeed_UP = false;
+                gastarEnergia = false;
+                subirPoder = false;
                 count = 0;
-                Debug.Log("desactivar");
+                Debug.Log("desactivado");
             }
         }
 
-        if (ChangeSpeed_UP)
+        if (subirEnergia)
         {
-            speed += velocidadSubida;
-            sli.value = speed;
-
-            if (speed == 25)
+            Debug.Log("power");
+            if (gastarEnergia == true)
             {
-                ChangeSpeed_DOWN = true;
-                ChangeSpeed_UP = false;
+                estabaGastandoEnergia = true;
+                gastarEnergia = false;
+            }
+            if (energia < limitCantidadSubirEnergia)
+            {
+                energia += velocidadSubida;
+                sli.value = energia;
+                rootPower1.localScale = new Vector3(1, Mathf.Clamp01(energia / 25), 1);
+                rootPower2.localScale = new Vector3(1, Mathf.Clamp01(energia / 25), 1);
+            }
+            if (energia >= limitCantidadSubirEnergia)
+            {
+                if (estabaGastandoEnergia)
+                {
+                    gastarEnergia = true;
+                    estabaGastandoEnergia = false;
+                }
+                subirEnergia = false;
             }
         }
 
-        if (ChangeSpeed_DOWN)
+        if (gastarEnergia)
         {
-            speed -= velocidadSubida;
-            sli.value = speed;
-
-            if (speed == 0)
+            if (energia >= 0)
             {
-                ChangeSpeed_DOWN = false;
+                energia -= velocidadBajada;
+                sli.value = energia;
+                rootPower1.localScale = new Vector3(1, (energia / 25), 1);
+                rootPower2.localScale = new Vector3(1, (energia / 25), 1);
+            }
+            if (energia <= 0)
+            {
+                gastarEnergia = false;
+                count = 0;
+                subirPoder = false;
+                Debug.Log("desactivado");
             }
         }
 
-        Debug.Log(speed);
+        if (subirPoder && poder <= energia)
+        {
+            poder += velocidadSubida;
+            sli2.value = poder;
+            esferaT.localScale = new Vector3(poder, poder, poder);
+            chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            esfera.SetActive(true);
+            puedeComprobarPoder = true;
+        }
+
+        if (puedeComprobarPoder && poder >= energia && energia >= 0)
+        {
+            poder = energia;
+            sli2.value = poder;
+            esferaT.localScale = new Vector3(poder, poder, poder);
+            chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            esfera.SetActive(true);
+        }
+
+        if (!subirPoder && poder >= 0)
+        {
+            poder -= velocidadSubida;
+            sli2.value = poder;
+            esferaT.localScale = new Vector3(poder, poder, poder);
+            chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            esfera.SetActive(true);
+            puedeComprobarPoder = false;
+        }
+
+        if (poder <= 0)
+        {
+            esferaT.localScale = new Vector3(0, 0, 0);
+            chromatic.intensity.value = normalChromatic;
+            esfera.SetActive(false);
+        }
+
+        if (triggerPowerUp.onlyT)
+        {
+            if (!enter)
+            {
+                CargarEnergia(5);
+                enter = true;
+            }
+        }
+        else
+        {
+            enter = false;
+        }
     }
 }

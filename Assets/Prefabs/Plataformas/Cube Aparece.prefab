@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7638981167659951606}
   - component: {fileID: 7638981167659951604}
   - component: {fileID: 7638981167659951607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_t
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.05, z: 1}
+  m_Center: {x: 0, y: 0.475, z: 0}
 --- !u!65 &7638981167659951604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,8 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9301f2c3a1ef9d44fa950121cede5fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyT: 0
   stayT: 0
   stayC: 0
+  tagg: 
 --- !u!1 &7638981169023434965
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7638981169023434961}
   - component: {fileID: 7638981169023434958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube Aparece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 7638981169023434965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.85, y: 3.33, z: 1.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5625, y: 1.8625, z: 1}
   m_Children:
   - {fileID: 7638981167659951611}
   m_Father: {fileID: 0}

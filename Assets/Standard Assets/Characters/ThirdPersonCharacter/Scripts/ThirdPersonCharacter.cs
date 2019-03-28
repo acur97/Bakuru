@@ -10,6 +10,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
+        public float poderMoverAire;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
@@ -66,7 +67,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			else
 			{
 				HandleAirborneMovement();
-			}
+            }
 
 			ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
@@ -152,24 +153,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
+        void HandleAirborneMovement()
+        {
+            // apply extra gravity from multiplier:
+            Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
+            m_Rigidbody.AddForce(extraGravityForce);
+            //m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x * 2, m_JumpPower, m_Rigidbody.velocity.z * 2);
 
-		void HandleAirborneMovement()
-		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-			m_Rigidbody.AddForce(extraGravityForce);
-
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-		}
+            m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+        }
 
 
-		void HandleGroundedMovement(bool crouch, bool jump)
+        void HandleGroundedMovement(bool crouch, bool jump)
 		{
 			// check whether conditions are right to allow a jump:
 			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
 				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x * 2, m_JumpPower, m_Rigidbody.velocity.z * 2);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
@@ -186,17 +187,28 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public void OnAnimatorMove()
 		{
-			// we implement this function to override the default root motion.
-			// this allows us to modify the positional speed before it's applied.
-			if (m_IsGrounded && Time.deltaTime > 0)
-			{
-				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+            // we implement this function to override the default root motion.
+            // this allows us to modify the positional speed before it's applied.
 
-				// we preserve the existing y part of the current velocity.
-				v.y = m_Rigidbody.velocity.y;
-				m_Rigidbody.velocity = v;
-			}
-		}
+            if (m_IsGrounded && Time.deltaTime > 0)
+            {
+                Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+
+                // we preserve the existing y part of the current velocity.
+                v.y = m_Rigidbody.velocity.y;
+                m_Rigidbody.velocity = v;
+            }
+            if (!m_IsGrounded)
+            {
+                Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+
+                // we preserve the existing y part of the current velocity.
+                v.y = m_Rigidbody.velocity.y;
+                v.x = v.x * poderMoverAire;
+                v.x = v.z * poderMoverAire;
+                m_Rigidbody.velocity = v;
+            }
+        }
 
 
 		void CheckGroundStatus()
