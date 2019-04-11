@@ -42,7 +42,7 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 25.163052, y: -33.550735}
+        m_Offset: {x: 49.160507, y: -65.54734}
     - _MaskReplace:
         m_Texture: {fileID: 2800000, guid: ab9f935932698064b8dbbbb81b66e326, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -99,7 +99,7 @@ Material:
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 4.2473516, b: 5.0387836, a: 1}
+    - _EmissionColor: {r: 0, g: 6.04397, b: 7.1259155, a: 1}
     - _MainColor: {r: 0, g: 0, b: 0, a: 1}
     - _MaskColor: {r: 1, g: 1, b: 1, a: 1}
     - _MaskScale: {r: 15.15, g: 1, b: 1, a: 1}
