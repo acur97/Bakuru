@@ -9,37 +9,50 @@ public class DisolveObject : MonoBehaviour
     public float velDisolucion = 0.5f;
     [Space]
     public Transform trans;
+    private MeshRenderer[] meshes;
+    private Material[] mats;
+    public BoxCollider Bcoll;
     public DisolveTrigger trigger;
     [Header("Atributos solo al aparecer")]
     public float alphaVal = 112;
     public float emissionPower = 1.25f;
 
-    private Material mat;
+    //private Material mat;
     private float firstX;
     private Color32 col;
     private Color32 colE;
     private float HSV_h;
     private float HSV_s;
     private float HSV_v;
-    private BoxCollider Bcoll;
     private bool enter;
     private bool exit = true;
     private float speed = 0;
 
-    private void Awake()
+    private void Start()
     {
-        mat = trans.GetComponent<MeshRenderer>().material;
-        Bcoll = trans.GetComponent<BoxCollider>();
-        col = mat.GetColor("_Color");
+        //mat = trans.GetComponent<MeshRenderer>().material;
+        meshes = GetComponentsInChildren<MeshRenderer>();
+        mats = new Material[meshes.Length];
+        for (int i = 0; i < meshes.Length; i++)
+        {
+            mats[i] = meshes[i].material;
+        }
+        //Bcoll = trans.GetComponent<BoxCollider>();
+        col = mats[1].GetColor("_Color");
         if (forma == metodo.Aparecer)
         {
-            colE = mat.GetColor("_EmissionColor");
+            colE = mats[1].GetColor("_EmissionColor");
             Color32 col2 = new Color32(col.r, col.g, col.b, 0);
             Color.RGBToHSV(colE, out HSV_h, out HSV_s, out HSV_v);
             HSV_v = 0;
             Color32 colE2 = Color.HSVToRGB(HSV_h, HSV_s, HSV_v);
-            mat.SetColor("_Color", col2);
-            mat.SetColor("_EmissionColor", colE2);
+            for (int i = 0; i < mats.Length; i++)
+            {
+                mats[i].SetColor("_Color", col2);
+                mats[i].SetColor("_EmissionColor", colE2);
+            }
+            //mat.SetColor("_Color", col2);
+            //mat.SetColor("_EmissionColor", colE2);
         }
         trigger.tagg = "PlayerSphere";
     }
@@ -69,13 +82,22 @@ public class DisolveObject : MonoBehaviour
                 Color.RGBToHSV(colE, out HSV_h, out HSV_s, out HSV_v);
                 HSV_v = speed * emissionPower;
                 Color32 colE2 = Color.HSVToRGB(HSV_h, HSV_s, HSV_v);
-                mat.SetColor("_Color", col2);
-                mat.SetColor("_EmissionColor", colE2);
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    mats[i].SetColor("_Color", col2);
+                    mats[i].SetColor("_EmissionColor", colE2);
+                }
+                //mat.SetColor("_Color", col2);
+                //mat.SetColor("_EmissionColor", colE2);
             }
             else
             {
                 Color32 col2 = new Color32(col.r, col.g, col.b, (byte)((speed.Remap(0, 2, 2, 0)) * 127.5f));
-                mat.SetColor("_Color", col2);
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    mats[i].SetColor("_Color", col2);
+                }
+                //mat.SetColor("_Color", col2);
             }
         }
         else
@@ -92,14 +114,23 @@ public class DisolveObject : MonoBehaviour
                 Color.RGBToHSV(colE, out HSV_h, out HSV_s, out HSV_v);
                 HSV_v = speed * emissionPower;
                 Color32 colE2 = Color.HSVToRGB(HSV_h, HSV_s, HSV_v);
-                mat.SetColor("_Color", col2);
-                mat.SetColor("_EmissionColor", colE2);
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    mats[i].SetColor("_Color", col2);
+                    mats[i].SetColor("_EmissionColor", colE2);
+                }
+                //mat.SetColor("_Color", col2);
+                //mat.SetColor("_EmissionColor", colE2);
                 Bcoll.enabled = false;
             }
             else
             {
                 Color32 col2 = new Color32(col.r, col.g, col.b, (byte)((speed.Remap(2, 0, 0, 2)) * 127.5f));
-                mat.SetColor("_Color", col2);
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    mats[i].SetColor("_Color", col2);
+                }
+                //mat.SetColor("_Color", col2);
                 Bcoll.enabled = true;
             }
         }

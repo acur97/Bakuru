@@ -59,6 +59,8 @@ public class CharacterControl : MonoBehaviour
         _velocity.z /= 1 + Drag.z * Time.deltaTime;
 
         _controller.Move(_velocity * Time.deltaTime);
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
 }

@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 82483b9cec584734dae281c6cd4652f5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTex:
-        m_Texture: {fileID: 2800000, guid: 79ae22a2b9da40d44a5ceee32dfb3214, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6bf7712dda4dcf549904b7199929f198, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1add266b2bc2a9f48959ca2068fe69af, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 533c0cb42b77daf45902d3338a663a8c, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: 1add266b2bc2a9f48959ca2068fe69af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 533c0cb42b77daf45902d3338a663a8c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -71,9 +71,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionStrength: 2
+    - _EmissionStrength: 1.75
     - _GlossMapScale: 1
-    - _Glossiness: 0.472
+    - _Glossiness: 0.25
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -81,14 +81,14 @@ Material:
     - _Parallax: 0.02
     - _Radius: 8.269496
     - _SmoothnessTextureChannel: 0
-    - _Softness: 3
+    - _Softness: 5
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - GLOBAL_Position: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0, g: 0.50196075, b: 1, a: 1}
+    - _Color: {r: 0.75, g: 0.75, b: 1, a: 0}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Position: {r: 1.91, g: 1.5, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0.5, b: 1, a: 1}
+    - _Position: {r: 1.51, g: 1.5, b: 0, a: 0}

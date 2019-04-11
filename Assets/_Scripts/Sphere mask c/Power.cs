@@ -43,7 +43,6 @@ public class Power : MonoBehaviour
         esferaT = esfera.transform;
         esferaR = esfera.GetComponent<SphereCollider>();
         esferaT.localScale = new Vector3(0, 0, 0);
-        esfera.SetActive(false);
         post.profile.TryGetSettings(out chromatic);
         post.profile.TryGetSettings(out bloom);
         post.profile.TryGetSettings(out grain);
@@ -51,12 +50,24 @@ public class Power : MonoBehaviour
         normalBloom = bloom.intensity.value;
         normalGrain = grain.intensity.value;
         triggerPowerUp.tagg = "PowerUp";
+        triggerPowerUp.tagg2 = "Coleccion";
 
         sli.value = 25;
         sli2.value = 0;
 
         rootPower1.localScale = new Vector3(1, 1, 1);
         rootPower2.localScale = new Vector3(1, 1, 1);
+    }
+
+    private void Start()
+    {
+        DelayStart();
+    }
+
+    IEnumerator DelayStart()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        esfera.SetActive(false);
     }
 
     public void CargarEnergia(int cantidadEnergia)

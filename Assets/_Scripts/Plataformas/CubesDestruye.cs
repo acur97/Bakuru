@@ -7,10 +7,12 @@ public class CubesDestruye : MonoBehaviour
     public float tiempoEspera;
     [Space]
     public GameObject cube;
+    private MeshRenderer[] meshes;
+    private Material[] mats;
 
     private bool enter;
-    private DisolveTrigger trigger;
-    private Material mat;
+    public DisolveTrigger trigger;
+    //private Material mat;
     private Color32 col;
     private float HSV_h;
     private float HSV_s;
@@ -19,11 +21,17 @@ public class CubesDestruye : MonoBehaviour
     private bool caer;
     private float sumandoCaida = 0;
 
-    private void Awake()
+    private void Start()
     {
-        trigger = cube.GetComponent<DisolveTrigger>();
-        mat = cube.GetComponent<MeshRenderer>().material;
-        col = mat.GetColor("_Color");
+        //trigger = cube.GetComponent<DisolveTrigger>();
+        //mat = cube.GetComponent<MeshRenderer>().material;
+        meshes = GetComponentsInChildren<MeshRenderer>();
+        mats = new Material[meshes.Length];
+        for (int i = 0; i < meshes.Length; i++)
+        {
+            mats[i] = meshes[i].material;
+        }
+        col = mats[1].GetColor("_Color");
         Color.RGBToHSV(col, out HSV_h, out HSV_s, out HSV_v);
         trigger.tagg = "Player";
     }
@@ -66,13 +74,21 @@ public class CubesDestruye : MonoBehaviour
             
             HSV_v = speed;
             col2 = Color.HSVToRGB(HSV_h, HSV_s, HSV_v);
-            mat.SetColor("_Color", col2);
+            for (int i = 0; i < mats.Length; i++)
+            {
+                mats[i].SetColor("_Color", col2);
+            }
+            //mat.SetColor("_Color", col2);
         }
         speed = v_end;
         
         HSV_v = speed;
         col2 = Color.HSVToRGB(HSV_h, HSV_s, HSV_v);
-        mat.SetColor("_Color", col2);
+        //mat.SetColor("_Color", col2);
+        for (int i = 0; i < mats.Length; i++)
+        {
+            mats[i].SetColor("_Color", col2);
+        }
 
         yield return new WaitForSeconds(duration);
     }

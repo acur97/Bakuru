@@ -6,6 +6,7 @@
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Color2 ("Color2", Color) = (1,1,1,1)
 		_MainTex2 ("Albedo2 (RGB)", 2D) = "white" {}
+        _BumpMap ("Bumpmap", 2D) = "bump" {}
 		_ColorStrength ("Color Strength", Range(0,5)) = 1
 		_EmissionColor ("Emission Color", Color) = (1,1,1,1)
 		_EmissionTex ("Emission (RGB)", 2D) = "white" {}
@@ -40,6 +41,7 @@
 			float2 uv_MainTex2;
 			float2 uv_EmissionTex;
 			float3 worldPos;
+            float2 uv_BumpMap;
         };
 
         half _Glossiness;
@@ -49,6 +51,7 @@
         fixed4 _Color;
 		fixed4 _Color2;
 		fixed4 _EmissionColor;
+        sampler2D _BumpMap;
 
 		//Spherical Mask
 		float4 _Position;
@@ -74,6 +77,7 @@
 			//fixed4 c_g = fixed4(j.r, j.g, j.b, j.a);
 			//Emission
 			fixed4 e = tex2D(_EmissionTex, IN.uv_EmissionTex) * _EmissionColor * _EmissionStrength;
+            o.Normal = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap));
 
 			half d = distance(_Position, IN.worldPos);
 			half sum = saturate((d - _Radius) / -_Softness);

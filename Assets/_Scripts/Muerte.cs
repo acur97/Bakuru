@@ -8,7 +8,7 @@ public class Muerte : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Initiate.Fade("SampleScene", Color.black, 1);
+            Initiate.Fade("SampleScene", Color.black, 2);
         }
     }
 }
