@@ -18,32 +18,60 @@ public class CharacterControl : MonoBehaviour
     public Transform dolly;
     public float velocidadY;
     public Animator anim;
+    [Range(0, 1)]
+    public float PotenciaGroundC;
+    public Transform groundCheker2;
+    private DisolveTrigger groundCheker2T;
+    private Vector3 move;
 
-    void Start()
+    private void Awake()
     {
+        groundCheker2T = groundCheker2.GetComponent<DisolveTrigger>();
         _controller = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        groundCheker2.localPosition = new Vector3(0, Mathf.Clamp((_controller.velocity.y * PotenciaGroundC), -10, 0), 0);
+
         dolly.position = new Vector3(dolly.position.x, Mathf.Lerp(transform.position.y, dolly.position.y, velocidadY), dolly.position.z);
         _isGrounded = _controller.isGrounded;
-        //_isGrounded = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
+
+        //if (groundCheker3T.stayAllC | _controller.isGrounded)
+        //{
+        //    _isGrounded = true;
+        //}
+        //else
+        //{
+        //    _isGrounded = false;
+        //}
+
+        //if (groundCheker1.stayAllC | groundCheker2.stayAllC | groundCheker3T.stayAllC)
+        //{
+        //    _isGrounded = true;
+        //}
+        //else
+        //{
+        //    _isGrounded = false;
+        //}
+
+        //_isGrounded = groundCheker.stayAllC;
+
+        //_isGrounded = Physics.CheckSphere(groundCheker3.transform.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
         if (_isGrounded && _velocity.y < 0)
             _velocity.y = 0f;
 
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-        anim.SetFloat("velocidad", Mathf.Abs(Input.GetAxis("Horizontal")));
-        _controller.Move(move * Time.deltaTime * Speed);
+        move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        _controller.Move(move * Time.unscaledDeltaTime * Speed);
         if (move != Vector3.zero)
             transform.forward = move;
 
-        if (Input.GetButtonDown("Jump") && _isGrounded)
-        {
-            _velocity.y += Mathf.Sqrt(JumpHeight * -2f * Gravity);
-            anim.SetTrigger("Salto");
-        }
+        //if (Input.GetButtonDown("Jump") && _isGrounded)
+        //{
+        //    _velocity.y += Mathf.Sqrt(JumpHeight * -2f * Gravity);
+        //    anim.SetTrigger("Salto");
+        //}
 
         /*if (Input.GetButtonDown("Dash"))
         {
@@ -52,15 +80,25 @@ public class CharacterControl : MonoBehaviour
         }*/
 
 
-        _velocity.y += Gravity * Time.deltaTime;
+        _velocity.y += Gravity * Time.unscaledDeltaTime;
 
-        _velocity.x /= 1 + Drag.x * Time.deltaTime;
-        _velocity.y /= 1 + Drag.y * Time.deltaTime;
-        _velocity.z /= 1 + Drag.z * Time.deltaTime;
+        _velocity.x /= 1 + Drag.x * Time.unscaledDeltaTime;
+        _velocity.y /= 1 + Drag.y * Time.unscaledDeltaTime;
+        _velocity.z /= 1 + Drag.z * Time.unscaledDeltaTime;
 
-        _controller.Move(_velocity * Time.deltaTime);
+        _controller.Move(_velocity * Time.unscaledDeltaTime);
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
+    private void Update()
+    {
+        anim.SetFloat("velocidad", Mathf.Abs(move.x));
+
+        if (Input.GetButtonDown("Jump") && groundCheker2T.stayAllC)
+        {
+            _velocity.y += Mathf.Sqrt(JumpHeight * -2f * Gravity);
+            anim.SetTrigger("Salto");
+        }
+    }
 }

@@ -1495,6 +1495,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jugador
       objectReference: {fileID: 0}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: sli
+      value: 
+      objectReference: {fileID: 535860572}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: rootPower
+      value: 
+      objectReference: {fileID: 1867210321}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: sli2
+      value: 
+      objectReference: {fileID: 1336720606}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: post
+      value: 
+      objectReference: {fileID: 1858635232}
+    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2178620038069290169, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1550,26 +1575,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: sli
-      value: 
-      objectReference: {fileID: 535860572}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: rootPower
-      value: 
-      objectReference: {fileID: 1867210321}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: sli2
-      value: 
-      objectReference: {fileID: 1336720606}
-    - target: {fileID: 2178620038069290168, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
-        type: 3}
-      propertyPath: post
-      value: 
-      objectReference: {fileID: 1858635232}
     - target: {fileID: 2178620038537854022, guid: 2c12e2f3fb4c69f46a2074d5d216dc6a,
         type: 3}
       propertyPath: CollisionModule.plane0

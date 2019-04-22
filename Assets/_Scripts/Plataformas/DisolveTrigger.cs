@@ -7,6 +7,8 @@ public class DisolveTrigger : MonoBehaviour
     public bool onlyT;
     public bool stayT;
     public bool stayC;
+    public bool stayAllC;
+    public bool usarTags = true;
     public string tagg;
     public string tagg2;
     [Space]
@@ -21,20 +23,24 @@ public class DisolveTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagg))
+        stayAllC = true;
+        if (usarTags)
         {
-            onlyT = true;
-            if (destruirOtro)
+            if (other.CompareTag(tagg))
             {
-                tomarPoder = true;
+                onlyT = true;
+                if (destruirOtro)
+                {
+                    tomarPoder = true;
+                    obj = other.gameObject;
+                }
+            }
+            if (destruirOtroColecc && other.CompareTag(tagg2))
+            {
+                onlyT = true;
+                tomarColeccionable = true;
                 obj = other.gameObject;
             }
-        }
-        if (destruirOtroColecc && other.CompareTag(tagg2))
-        {
-            onlyT = true;
-            tomarColeccionable = true;
-            obj = other.gameObject;
         }
     }
 
@@ -84,36 +90,50 @@ public class DisolveTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(tagg))
+        stayAllC = true;
+        if (usarTags)
         {
-            stayT = true;
+            if (other.CompareTag(tagg))
+            {
+                stayT = true;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(tagg))
+        stayAllC = false;
+        if (usarTags)
         {
-            stayT = false;
-            onlyT = false;
-            //if (destruirOtro)
-            //{
-            //    tomarPoder = false;
-            //    obj = null;
-            //}
+            if (other.CompareTag(tagg))
+            {
+                stayT = false;
+                onlyT = false;
+                //if (destruirOtro)
+                //{
+                //    tomarPoder = false;
+                //    obj = null;
+                //}
+            }
         }
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag(tagg))
+        if (usarTags)
         {
-            stayC = true;
+            if (collision.gameObject.CompareTag(tagg))
+            {
+                stayC = true;
+            }
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag(tagg))
+        if (usarTags)
         {
-            stayC = false;
+            if (collision.gameObject.CompareTag(tagg))
+            {
+                stayC = false;
+            }
         }
     }
 }

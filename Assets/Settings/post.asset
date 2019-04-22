@@ -1473,7 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1528,7 +1528,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 1
-    value: 0
+    value: 1
   dirtTexture:
     overrideState: 1
     value: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
@@ -1560,5 +1560,5 @@ MonoBehaviour:
     overrideState: 1
     value: 0.02
   fastMode:
-    overrideState: 0
+    overrideState: 1
     value: 0

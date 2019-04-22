@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class Power : MonoBehaviour
 {
-    public Slider sli;
+    //public Slider sli;
     public Transform rootPower1;
     public Transform rootPower2;
-    public Slider sli2;
+    //public Slider sli2;
     public GameObject esfera;
     public DisolveTrigger triggerPowerUp;
     public float velocidadSubida;
@@ -28,10 +28,6 @@ public class Power : MonoBehaviour
 
     private ChromaticAberration chromatic;
     private float normalChromatic;
-    private Bloom bloom;
-    private float normalBloom;
-    private Grain grain;
-    private float normalGrain;
     private Transform esferaT;
     private SphereCollider esferaR;
 
@@ -44,16 +40,12 @@ public class Power : MonoBehaviour
         esferaR = esfera.GetComponent<SphereCollider>();
         esferaT.localScale = new Vector3(0, 0, 0);
         post.profile.TryGetSettings(out chromatic);
-        post.profile.TryGetSettings(out bloom);
-        post.profile.TryGetSettings(out grain);
         normalChromatic = chromatic.intensity.value;
-        normalBloom = bloom.intensity.value;
-        normalGrain = grain.intensity.value;
         triggerPowerUp.tagg = "PowerUp";
         triggerPowerUp.tagg2 = "Coleccion";
 
-        sli.value = 25;
-        sli2.value = 0;
+        //sli.value = 25;
+        //sli2.value = 0;
 
         rootPower1.localScale = new Vector3(1, 1, 1);
         rootPower2.localScale = new Vector3(1, 1, 1);
@@ -142,7 +134,7 @@ public class Power : MonoBehaviour
             if (energia < limitCantidadSubirEnergia)
             {
                 energia += velocidadSubida;
-                sli.value = energia;
+                //sli.value = energia;
                 rootPower1.localScale = new Vector3(1, Mathf.Clamp01(energia / 25), 1);
                 rootPower2.localScale = new Vector3(1, Mathf.Clamp01(energia / 25), 1);
             }
@@ -162,7 +154,7 @@ public class Power : MonoBehaviour
             if (energia >= 0)
             {
                 energia -= velocidadBajada;
-                sli.value = energia;
+                //sli.value = energia;
                 rootPower1.localScale = new Vector3(1, (energia / 25), 1);
                 rootPower2.localScale = new Vector3(1, (energia / 25), 1);
             }
@@ -178,7 +170,7 @@ public class Power : MonoBehaviour
         if (subirPoder && poder <= energia)
         {
             poder += velocidadSubida;
-            sli2.value = poder;
+            //sli2.value = poder;
             esferaT.localScale = new Vector3(poder, poder, poder);
             chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -189,7 +181,7 @@ public class Power : MonoBehaviour
         if (puedeComprobarPoder && poder >= energia && energia >= 0)
         {
             poder = energia;
-            sli2.value = poder;
+            //sli2.value = poder;
             esferaT.localScale = new Vector3(poder, poder, poder);
             chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -199,7 +191,7 @@ public class Power : MonoBehaviour
         if (!subirPoder && poder >= 0)
         {
             poder -= velocidadSubida;
-            sli2.value = poder;
+            //sli2.value = poder;
             esferaT.localScale = new Vector3(poder, poder, poder);
             chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
             transform.eulerAngles = new Vector3(0, 0, 0);
