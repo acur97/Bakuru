@@ -1382,7 +1382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550187537120755227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4550187539198135523}
@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 4550187538280154727}
   m_Layer: 10
   m_Name: Cube_t
-  m_TagString: Untagged
+  m_TagString: PisoEspiritual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1509,7 +1509,13 @@ MonoBehaviour:
   onlyT: 0
   stayT: 0
   stayC: 0
+  stayAllC: 0
+  usarTags: 1
   tagg: 
+  tagg2: 
+  destruirOtro: 0
+  destruirOtroColecc: 0
+  puntoObjetos: {fileID: 0}
 --- !u!1 &4550187538548562398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550187538548562398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.51, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4550187539198135523}
@@ -1565,9 +1571,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550187538980765413}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 59, y: -0.595, z: 0}
-  m_LocalScale: {x: 0.8015625, y: 1.73125, z: 1}
+  m_LocalScale: {x: 0.58551633, y: 1.9260156, z: 1}
   m_Children:
   - {fileID: 2783969043096431441}
   - {fileID: 2783969043127509757}

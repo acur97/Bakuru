@@ -142,7 +142,7 @@ public class DisolveObject : MonoBehaviour
         while (elapsed < duration)
         {
             speed = Mathf.Lerp(v_start, v_end, elapsed / duration);
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
         speed = v_end;

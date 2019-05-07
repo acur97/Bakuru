@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2672870637803819457}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.045, y: 4.783865, z: 0}
   m_LocalScale: {x: 0.5625, y: 1.8625, z: 1}
   m_Children:
@@ -173,7 +173,13 @@ MonoBehaviour:
   onlyT: 0
   stayT: 0
   stayC: 0
+  stayAllC: 0
+  usarTags: 1
   tagg: 
+  tagg2: 
+  destruirOtro: 0
+  destruirOtroColecc: 0
+  puntoObjetos: {fileID: 0}
 --- !u!1 &5697532851164972748
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +268,6 @@ GameObject:
   - component: {fileID: 5693869920402829808}
   - component: {fileID: 5723066680700479888}
   - component: {fileID: 5712508858167148552}
-  - component: {fileID: 5697612288286373835}
   m_Layer: 16
   m_Name: DoorHugeTop_LOD00
   m_TagString: Untagged
@@ -329,20 +334,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5697612288286373835
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5697612288286373834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300006, guid: b33dd59805f09cb4f94bc163dcdb2dc9, type: 3}
 --- !u!1 &5697828069780489580
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +422,6 @@ GameObject:
   - component: {fileID: 5693889247697288424}
   - component: {fileID: 5720466985312047274}
   - component: {fileID: 5710614566449326344}
-  - component: {fileID: 5697892319428227705}
   m_Layer: 16
   m_Name: DoorHugeBot_LOD00
   m_TagString: Untagged
@@ -498,20 +488,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5697892319428227705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5697892319428227704}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: b33dd59805f09cb4f94bc163dcdb2dc9, type: 3}
 --- !u!1 &5699127512442215234
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 5699127512442215234}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.70710677}
   m_LocalPosition: {x: 2.4266665, y: 0.004904831, z: 0}
-  m_LocalScale: {x: 0.07400535, y: 0.24530648, z: 0.8774642}
+  m_LocalScale: {x: 0.07400535, y: 0.24530648, z: 1.3214062}
   m_Children:
   - {fileID: 5693889247697288424}
   - {fileID: 5693869920402829808}

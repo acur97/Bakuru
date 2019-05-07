@@ -79,9 +79,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Radius: 5.269496
+    - _Radius: 5.769496
     - _SmoothnessTextureChannel: 0
-    - _Softness: 2
+    - _Softness: 3
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0

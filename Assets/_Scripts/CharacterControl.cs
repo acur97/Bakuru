@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CharacterControl : MonoBehaviour
 {
+    public GameManager manager;
+    [Space]
     public float Speed = 5f;
     public float JumpHeight = 2f;
     public float Gravity = -9.81f;
@@ -16,6 +19,7 @@ public class CharacterControl : MonoBehaviour
     private Vector3 _velocity;
     public bool _isGrounded = true;
     public Transform dolly;
+    public CinemachineVirtualCamera Vcam;
     public float velocidadY;
     public Animator anim;
     [Range(0, 1)]
@@ -23,6 +27,11 @@ public class CharacterControl : MonoBehaviour
     public Transform groundCheker2;
     private DisolveTrigger groundCheker2T;
     private Vector3 move;
+    private Vector3 V3zero = new Vector3(0, 0, 0);
+
+    private float posXanterior;
+    private float posXoffset;
+    private bool camaraSeguir = true;
 
     private void Awake()
     {
@@ -30,11 +39,34 @@ public class CharacterControl : MonoBehaviour
         _controller = GetComponent<CharacterController>();
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("PisoEspiritual"))
+        {
+            posXoffset = hit.transform.position.x - posXanterior;
+            posXanterior = hit.transform.position.x;
+
+            Vector3 pos = transform.position;
+            if (posXoffset < 2)
+            {
+                transform.position = new Vector3(pos.x + posXoffset, pos.y, pos.z);
+            }
+            //transform.position = new Vector3(pos.x, pos.y, pos.z);
+        }
+        else
+        {
+            posXanterior = 0;
+        }
+    }
+
     void FixedUpdate()
     {
         groundCheker2.localPosition = new Vector3(0, Mathf.Clamp((_controller.velocity.y * PotenciaGroundC), -10, 0), 0);
 
-        dolly.position = new Vector3(dolly.position.x, Mathf.Lerp(transform.position.y, dolly.position.y, velocidadY), dolly.position.z);
+        if (camaraSeguir)
+        {
+            dolly.position = new Vector3(dolly.position.x, Mathf.Lerp(transform.position.y, dolly.position.y, velocidadY), dolly.position.z);
+        }
         _isGrounded = _controller.isGrounded;
 
         //if (groundCheker3T.stayAllC | _controller.isGrounded)
@@ -62,10 +94,10 @@ public class CharacterControl : MonoBehaviour
             _velocity.y = 0f;
 
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-        _controller.Move(move * Time.unscaledDeltaTime * Speed);
-        if (move != Vector3.zero)
-            transform.forward = move;
+        //move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        //_controller.Move(move * Time.unscaledDeltaTime * Speed);
+        //if (move != Vector3.zero)
+        //    transform.forward = move;
 
         //if (Input.GetButtonDown("Jump") && _isGrounded)
         //{
@@ -93,12 +125,33 @@ public class CharacterControl : MonoBehaviour
 
     private void Update()
     {
+        move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        _controller.Move(move * Time.unscaledDeltaTime * Speed);
+        if (move != V3zero)
+            transform.forward = move;
+
         anim.SetFloat("velocidad", Mathf.Abs(move.x));
 
         if (Input.GetButtonDown("Jump") && groundCheker2T.stayAllC)
         {
             _velocity.y += Mathf.Sqrt(JumpHeight * -2f * Gravity);
             anim.SetTrigger("Salto");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Muerte"))
+        {
+            camaraSeguir = false;
+            Vcam.m_Follow = null;
+            Vcam.m_LookAt = null;
+            Initiate.Fade("SampleScene", Color.black, 2);
+        }
+        
+        if (other.CompareTag("Finish"))
+        {
+            manager.SiguienteNivel();
         }
     }
 }

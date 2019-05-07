@@ -109,7 +109,13 @@ MonoBehaviour:
   onlyT: 0
   stayT: 0
   stayC: 0
+  stayAllC: 0
+  usarTags: 1
   tagg: 
+  tagg2: 
+  destruirOtro: 0
+  destruirOtroColecc: 0
+  puntoObjetos: {fileID: 0}
 --- !u!65 &1230199897403082013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,7 +169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4417445477647474993}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 108.155, y: -1.9299998, z: 0}
   m_LocalScale: {x: 1.5, y: 1.7375, z: 1}
   m_Children:
@@ -258,11 +264,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.36251596
       objectReference: {fileID: 0}
-    - target: {fileID: 259806212434190040, guid: deb88dfc63631e8409cde9d47f8e1b95,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 23886461731819908, guid: deb88dfc63631e8409cde9d47f8e1b95,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -290,12 +291,32 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 64360087133137384, guid: deb88dfc63631e8409cde9d47f8e1b95,
+    - target: {fileID: 64060265458100328, guid: deb88dfc63631e8409cde9d47f8e1b95,
         type: 3}
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 64060265458100328, guid: deb88dfc63631e8409cde9d47f8e1b95,
+    - target: {fileID: 205127519154056466, guid: deb88dfc63631e8409cde9d47f8e1b95,
+        type: 3}
+      propertyPath: m_LocalReferencePoint.x
+      value: -5.996968
+      objectReference: {fileID: 0}
+    - target: {fileID: 205127519154056466, guid: deb88dfc63631e8409cde9d47f8e1b95,
+        type: 3}
+      propertyPath: m_LocalReferencePoint.y
+      value: 8.147814
+      objectReference: {fileID: 0}
+    - target: {fileID: 205127519154056466, guid: deb88dfc63631e8409cde9d47f8e1b95,
+        type: 3}
+      propertyPath: m_Size
+      value: 16.295628
+      objectReference: {fileID: 0}
+    - target: {fileID: 259806212434190040, guid: deb88dfc63631e8409cde9d47f8e1b95,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64360087133137384, guid: deb88dfc63631e8409cde9d47f8e1b95,
         type: 3}
       propertyPath: m_Convex
       value: 1

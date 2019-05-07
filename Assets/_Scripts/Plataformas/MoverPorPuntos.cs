@@ -15,16 +15,19 @@ public class MoverPorPuntos : MonoBehaviour
     private float velocidad2;
     private float speed = 1;
     private bool cambio;
+
     private void Awake()
     {
         trans.position = puntos[count].position;
     }
+
     private void Update()
     {
         if (suavizado)
         {
             if (!cambio && Vector3.Distance(trans.position, puntos[count].position) <= (velocidad / 5))
             {
+                StopAllCoroutines();
                 StartCoroutine(ChangeSpeed(1, 0.2f, ((velocidad / 2) * 0.1f)));
                 cambio = true;
             }
@@ -40,6 +43,7 @@ public class MoverPorPuntos : MonoBehaviour
 
         if (trans.position == puntos[count].position)
         {
+            StopAllCoroutines();
             StartCoroutine(ChangeSpeed(0.2f, 1, ((velocidad / 2) * 0.1f)));
             cambio = false;
 
@@ -62,6 +66,7 @@ public class MoverPorPuntos : MonoBehaviour
             }
         }
     }
+
     IEnumerator ChangeSpeed(float v_start, float v_end, float duration)
     {
         float elapsed = 0.0f;

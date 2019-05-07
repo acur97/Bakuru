@@ -13,7 +13,7 @@ public class maskPos : MonoBehaviour
     private void Update()
     {
         vec = new Vector4(transform.position.x, transform.position.y, transform.position.z, 0);
-        mat.SetFloat("_Radius", transform.localScale.x +  radiusOffset);
+        mat.SetFloat("_Radius", transform.localScale.x + radiusOffset);
         mat.SetVector("_Position", vec);
     }
 }

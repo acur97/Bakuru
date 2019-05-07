@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/SampleScene.unity
     guid: ad783a311d6536a4e9ea4aaaf6c02894
+  - enabled: 1
+    path: Assets/_Scenes/Nivel forest.unity
+    guid: 4a8a6c172712be642936fac72c811640
+  - enabled: 1
+    path: Assets/_Scenes/Nivel cueva.unity
+    guid: 21a96f4a18c5ea344a3bdb06063451d1
+  - enabled: 1
+    path: Assets/_Scenes/Nivel montana.unity
+    guid: 0941365b45651d34f8cc4254c0ca7e70
   m_configObjects: {}

@@ -23,7 +23,7 @@ public class Power : MonoBehaviour
     private bool puedeComprobarPoder;
     private bool gastarEnergia;
     private bool estabaGastandoEnergia;
-    private float limitCantidadSubirEnergia;
+    private float limitCantidadSubirEnergia = 25;
     private bool subirEnergia;
 
     private ChromaticAberration chromatic;
@@ -53,7 +53,7 @@ public class Power : MonoBehaviour
 
     private void Start()
     {
-        DelayStart();
+        StartCoroutine(DelayStart());
     }
 
     IEnumerator DelayStart()
@@ -83,14 +83,14 @@ public class Power : MonoBehaviour
         {
             gastarEnergia = true;
             subirPoder = true;
-            Debug.Log("activado");
+            //Debug.Log("activado");
         }
         if (count == 2)
         {
             gastarEnergia = false;
             subirPoder = false;
             count = 0;
-            Debug.Log("desactivado");
+            //Debug.Log("desactivado");
         }
     }
 
@@ -112,20 +112,20 @@ public class Power : MonoBehaviour
             {
                 gastarEnergia = true;
                 subirPoder = true;
-                Debug.Log("activado");
+                //Debug.Log("activado");
             }
             if (count == 2)
             {
                 gastarEnergia = false;
                 subirPoder = false;
                 count = 0;
-                Debug.Log("desactivado");
+                //Debug.Log("desactivado");
             }
         }
 
         if (subirEnergia)
         {
-            Debug.Log("power");
+            //Debug.Log("power");
             if (gastarEnergia == true)
             {
                 estabaGastandoEnergia = true;
@@ -153,7 +153,7 @@ public class Power : MonoBehaviour
         {
             if (energia >= 0)
             {
-                energia -= velocidadBajada;
+                energia -= (Time.unscaledDeltaTime * velocidadBajada);
                 //sli.value = energia;
                 rootPower1.localScale = new Vector3(1, (energia / 25), 1);
                 rootPower2.localScale = new Vector3(1, (energia / 25), 1);
@@ -163,13 +163,13 @@ public class Power : MonoBehaviour
                 gastarEnergia = false;
                 count = 0;
                 subirPoder = false;
-                Debug.Log("desactivado");
+                //Debug.Log("desactivado");
             }
         }
 
         if (subirPoder && poder <= energia)
         {
-            poder += velocidadSubida;
+            poder += (Time.unscaledDeltaTime * velocidadSubida);
             //sli2.value = poder;
             esferaT.localScale = new Vector3(poder, poder, poder);
             chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
@@ -190,7 +190,7 @@ public class Power : MonoBehaviour
 
         if (!subirPoder && poder >= 0)
         {
-            poder -= velocidadSubida;
+            poder -= (Time.unscaledDeltaTime * velocidadSubida);
             //sli2.value = poder;
             esferaT.localScale = new Vector3(poder, poder, poder);
             chromatic.intensity.value = normalChromatic + Mathf.Clamp01(poder / 50);
@@ -218,5 +218,8 @@ public class Power : MonoBehaviour
         {
             enter = false;
         }
+
+        energia = Mathf.Clamp(energia, 0, 25);
+        poder = Mathf.Clamp(poder, 0, 25);
     }
 }

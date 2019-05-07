@@ -40,6 +40,7 @@ public class DisolveTrigger : MonoBehaviour
                 onlyT = true;
                 tomarColeccionable = true;
                 obj = other.gameObject;
+                GameManager.Coleccionable(other.name);
             }
         }
     }
@@ -61,7 +62,7 @@ public class DisolveTrigger : MonoBehaviour
         {
             if (moverCollAbajo)
             {
-                obj.transform.position = Vector3.MoveTowards(obj.transform.position, puntoObjetos.position, Time.unscaledDeltaTime * 2.5f);
+                obj.transform.position = Vector3.MoveTowards(obj.transform.position, puntoObjetos.position, Time.unscaledDeltaTime * 10f);
             }
             else
             {
