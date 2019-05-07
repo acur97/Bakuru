@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -5753,12 +5753,12 @@ PrefabInstance:
     - target: {fileID: 4317327001426635323, guid: 420a1bf0018ed804d9b00439f51ad624,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017689207
+      value: 0.000000017682664
       objectReference: {fileID: 0}
     - target: {fileID: 4317327001426635323, guid: 420a1bf0018ed804d9b00439f51ad624,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013741014
+      value: -0.0000000013735931
       objectReference: {fileID: 0}
     - target: {fileID: 7399031185026713358, guid: 420a1bf0018ed804d9b00439f51ad624,
         type: 3}
@@ -5778,12 +5778,12 @@ PrefabInstance:
     - target: {fileID: 7399031185026713358, guid: 420a1bf0018ed804d9b00439f51ad624,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017689207
+      value: 0.000000017682664
       objectReference: {fileID: 0}
     - target: {fileID: 7399031185026713358, guid: 420a1bf0018ed804d9b00439f51ad624,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013741014
+      value: -0.0000000013735931
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 420a1bf0018ed804d9b00439f51ad624, type: 3}
