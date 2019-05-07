@@ -21224,49 +21224,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2672870639149331692, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3214062
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.70710677
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 5699939450773738060, guid: d4da20417139f054a986288d4d56136c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.42
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5697612288286373835, guid: d4da20417139f054a986288d4d56136c, type: 3}
-    - {fileID: 5697892319428227705, guid: d4da20417139f054a986288d4d56136c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4da20417139f054a986288d4d56136c, type: 3}
 --- !u!4 &1895613707 stripped
 Transform:
