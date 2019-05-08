@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     [Header("Canvas")]
     public Canvas canvasMenu;
     public Button btn_resumen;
+    private static Button Sbtn_resumen;
+    public Button btn_checkPoint;
+    private static Button Sbtn_checkPoint;
+    public Button btn_opciones;
+    private static Button Sbtn_opciones;
+    public Button btn_coleccionable;
+    private static Button Sbtn_coleccionable;
     private bool pausa;
     public PostProcessVolume post;
     private DepthOfField depth;
@@ -19,10 +26,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Sbtn_checkPoint = btn_checkPoint;
+        Sbtn_resumen = btn_resumen;
+        Sbtn_opciones = btn_opciones;
+        Sbtn_coleccionable = btn_coleccionable;
         canvasMenu.gameObject.SetActive(true);
         canvasMenu.enabled = false;
         post.profile.TryGetSettings(out depth);
         depth.active = false;
+        btn_checkPoint.interactable = false;
+        Navigation nav = btn_resumen.navigation;
+        nav.selectOnDown = btn_opciones;
+        btn_resumen.navigation = nav;
+        Navigation nav2 = btn_opciones.navigation;
+        nav2.selectOnUp = btn_resumen;
+        btn_opciones.navigation = nav2;
+
     }
 
     private void OnApplicationQuit()
@@ -84,6 +103,13 @@ public class GameManager : MonoBehaviour
 
     public static void Coleccionable(string nombreCol)
     {
+        Sbtn_checkPoint.interactable = true;
+        Navigation nav = Sbtn_resumen.navigation;
+        nav.selectOnDown = Sbtn_coleccionable;
+        Sbtn_resumen.navigation = nav;
+        Navigation nav2 = Sbtn_opciones.navigation;
+        nav2.selectOnUp = Sbtn_coleccionable;
+        Sbtn_opciones.navigation = nav2;
         MenuColeccionables.Coleccionable(nombreCol);
     }
 
