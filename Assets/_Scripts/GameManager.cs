@@ -84,8 +84,7 @@ public class GameManager : MonoBehaviour
 
     public static void Coleccionable(string nombreCol)
     {
-        Debug.Log("Coleccionable " + nombreCol);
-        //activar en el menu
+        MenuColeccionables.Coleccionable(nombreCol);
     }
 
     #endregion
