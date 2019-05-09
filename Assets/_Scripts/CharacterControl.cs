@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class CharacterControl : MonoBehaviour
 {
@@ -112,7 +113,7 @@ public class CharacterControl : MonoBehaviour
         }*/
 
 
-        _velocity.y += Gravity * Time.unscaledDeltaTime;
+        _velocity.y += Gravity * Time.deltaTime;
 
         _velocity.x /= 1 + Drag.x * Time.unscaledDeltaTime;
         _velocity.y /= 1 + Drag.y * Time.unscaledDeltaTime;
@@ -146,7 +147,7 @@ public class CharacterControl : MonoBehaviour
             camaraSeguir = false;
             Vcam.m_Follow = null;
             Vcam.m_LookAt = null;
-            Initiate.Fade("SampleScene", Color.black, 2);
+            Initiate.Fade(SceneManager.GetActiveScene().name, Color.black, 2);
         }
         
         if (other.CompareTag("Finish"))

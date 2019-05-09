@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Jugador")]
     public bool checkPoints = true;
     public CharacterControl characterC;
+    public Power characterP;
 
     private void Awake()
     {
@@ -129,6 +130,27 @@ public class GameManager : MonoBehaviour
         Initiate.Fade("SampleScene", Color.black, 1);
     }
 
+    public void Pausar()
+    {
+        Time.timeScale = 0;
+        characterC.enabled = false;
+        characterP.enabled = false;
+        canvasMenu.enabled = true;
+        depth.active = true;
+        btn_resumen.Select();
+        pausa = true;
+    }
+
+    public void Reanudar()
+    {
+        Time.timeScale = 1;
+        characterC.enabled = true;
+        characterP.enabled = true;
+        canvasMenu.enabled = false;
+        depth.active = false;
+        pausa = false;
+    }
+
     #endregion
 
     private void Update()
@@ -137,18 +159,11 @@ public class GameManager : MonoBehaviour
         {
             if (!pausa)
             {
-                Time.timeScale = 0;
-                canvasMenu.enabled = true;
-                depth.active = true;
-                btn_resumen.Select();
-                pausa = true;
+                Pausar();
             }
             else
             {
-                Time.timeScale = 1;
-                canvasMenu.enabled = false;
-                depth.active = false;
-                pausa = false;
+                Reanudar();
             }
         }
     }
