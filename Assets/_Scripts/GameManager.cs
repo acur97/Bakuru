@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("checkPoint_" + SceneManager.GetActiveScene().name + "_number", punto);
         PlayerPrefs.SetString("checkPoint_" + SceneManager.GetActiveScene().name + "_position", position.x.ToString() + "_" + position.y.ToString());
         PlayerPrefs.SetInt("RestartCheckPoint", 1);
+        Sbtn_checkPoint.interactable = true;
     }
 
     public void SiguienteNivel()
