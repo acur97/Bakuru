@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         Sbtn_checkPoint = btn_checkPoint;
         Sbtn_resumen = btn_resumen;
         Sbtn_opciones = btn_opciones;
@@ -90,15 +91,21 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
+            Time.timeScale = 1;
+            PlayerPrefs.SetInt("RestartCheckPoint", 0);
             Initiate.Fade("Nivel forest", Color.black, 0.5f);
             //PlayerPrefs
         }
         if (SceneManager.GetActiveScene().name == "Nivel forest")
         {
+            Time.timeScale = 1;
+            PlayerPrefs.SetInt("RestartCheckPoint", 0);
             Initiate.Fade("Nivel cueva", Color.black, 0.5f);
         }
         if (SceneManager.GetActiveScene().name == "Nivel cueva")
         {
+            Time.timeScale = 1;
+            PlayerPrefs.SetInt("RestartCheckPoint", 0);
             Initiate.Fade("Nivel montana", Color.black, 0.5f);
         }
     }
@@ -121,14 +128,15 @@ public class GameManager : MonoBehaviour
 
     public void VolverMenu()
     {
+        Time.timeScale = 1;
         PlayerPrefs.SetInt("RestartCheckPoint", 0);
-        //scenemanger menu
+        Initiate.Fade("StartMovie", Color.black, 1);
     }
 
     public void VolverCheckPoint()
     {
         Time.timeScale = 1;
-        Initiate.Fade("SampleScene", Color.black, 1);
+        Initiate.Fade(SceneManager.GetActiveScene().name, Color.black, 1);
     }
 
     public void Pausar()

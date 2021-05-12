@@ -20,13 +20,13 @@ public class DynamicResolutionBound : MonoBehaviour
     public float velocidadSubida = 1;
     [Range(0,2)]
     public float velocidadBajada = 1;
-    [Space]
-    public float maxResolutionWidthScale = 1.0f;
-    public float maxResolutionHeightScale = 1.0f;
-    public float minResolutionWidthScale = 0.5f;
-    public float minResolutionHeightScale = 0.5f;
-    public float scaleWidthIncrement = 0.1f;
-    public float scaleHeightIncrement = 0.1f;
+    //[Space]
+    //public float maxResolutionWidthScale = 1.0f;
+    //public float maxResolutionHeightScale = 1.0f;
+    //public float minResolutionWidthScale = 0.5f;
+    //public float minResolutionHeightScale = 0.5f;
+    //public float scaleWidthIncrement = 0.1f;
+    //public float scaleHeightIncrement = 0.1f;
 
     private float resW;
     private float resH;
